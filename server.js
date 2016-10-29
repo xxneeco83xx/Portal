@@ -13,7 +13,7 @@ var dataBaseName = 'Test';
 mongoose.connect('mongodb://localhost:' + portNumber + '/' + dataBaseName);
 
 app.configure(function() {
-    app.use(express.static(___dirname + '/public')); //Ubicacion de los ficheros estaticos
+    app.use(express.static(__dirname + '/public')); //Ubicacion de los ficheros estaticos
     app.use(express.logger('dev')); //Mostrar logs de todos los request
     app.use(express.bodyParser()); //Recibir el HTML con POST
     app.use(express.methodOverride()); //PUT & DELETE
