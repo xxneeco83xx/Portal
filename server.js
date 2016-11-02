@@ -10,7 +10,8 @@ var portNumber = '27017';
 var dataBaseName = 'Test';
 
 /*Creamos la conexion a la base de datos*/
-mongoose.connect('mongodb://localhost:' + portNumber + '/' + dataBaseName);
+var connection = mongoose.connect('mongodb://localhost:' + portNumber + '/' + dataBaseName);
+console.log(connection);
 
 app.configure(function() {
     app.use(express.static(__dirname + '/public')); //Ubicacion de los ficheros estaticos
@@ -19,13 +20,17 @@ app.configure(function() {
     app.use(express.methodOverride()); //PUT & DELETE
 });
 
+var Todo = mongoose.model('Todo', {
+        text : String
+});
+
 //MODELO DE BASE DE DATOS
 /*var schemaBase = new mongoose.Schema({
-    test: String
+    text: String
 });
 
 var Base = db.model('Base', schemaBase);
-module.exports = Base; */
+module.exports = Base;*/
 
 // Rutas de nuestro API
 // GET de todos los TODOs
